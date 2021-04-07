@@ -12,12 +12,17 @@ All scripts were developed in Python >= 3.6 and dependencies required
 are in `requirements.txt`, these can be installed typing in terminal 
 
 ```
-$ pip3 install requirements.txt
+$ pip3 install -r requirements.txt
 ```
+
+## Documentation
+
+See file `./docs.md` to get a detailed explanation of all functions in 
+these modules.
 
 ## AWS credentials
 
-To use the functions in this repository, it's necesary create the 
+Some functions in this repository need to create the 
 file `./aws-credentials.cfg` in order to obtain read permissions 
 in the data lake with preprocessed data. An example of this file is 
 `./aws-credentials.cfg.example`.  
