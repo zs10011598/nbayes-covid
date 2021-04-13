@@ -3,7 +3,7 @@ import json
 import requests
 
 
-def nbayes_epi_puma_v1(target, covariables, lim_inf_training, lim_sup_training, 
+def nbayes_analysis(target, covariables, lim_inf_training, lim_sup_training, 
           lim_inf_validation, lim_sup_validation, modifier=None, 
           type_analysis=None, lim_inf_first=None, lim_sup_first=None):
     '''

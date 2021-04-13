@@ -48,3 +48,37 @@ called `./epi_puma_1`
 		1. An array of objects, each object represents a covariable
 		2. An array of objects, each object represents a cell
 		3. A string which represents the reason why something was bad 
+
+* `nbayes_report(path, target, covariables, lim_inf_training, lim_sup_training, 
+	lim_inf_validation, lim_sup_validation, modifier=None, 
+	type_analysis=None, lim_inf_first=None, lim_sup_first=None)`: This function
+	generate two csv reports of `nbayes` analysis. Reports contain covariable
+	details and cells sumamary.
+
+    - Args: 
+
+    	1. `path` is the relative path where reportes will be stored
+		2.  `target` is a sublist of `["COVID-19 CONFIRMADO", 
+		"COVID-19 FALLECIDO", "COVID-19 NEGATIVO"]`
+		3. `covariables` is a sublist of `['Demograficos', 'Pobreza', 
+		'Movilidad', 'Infraestructura-Salud', 'Vulnerabilidad', 
+		'Worldclim', 'CCA-Climaticas', 'CCA-Contaminacion']`
+		4. `lim_inf_training` and `lim_sup_training` are dates which 
+		define the training period. All dates must be written in format 
+		yyyy-MM-dd.
+		5. `lim_inf_validation` and `lim_sup_validation` are dates which 
+		define the validation period.All dates must be written in format 
+		yyyy-MM-dd.
+		6. `modifier` modify the target, taking top decil "cases", "incidence", 
+		"prevalence" or "lethality"
+		7. `type_analysis` defines if the analysis will be improvement 
+		(`green`), deterioration (`red`) or profiling (`none`).
+		8. (Optional) `lim_inf_first` and `lim_sup_first` are dates 
+		which define the first period. All dates must be written in 
+		format yyyy-MM-dd.
+
+	- Returns:
+
+		1. Absolute path of covariables report
+		2. Absolute path of cells report
+		3. A string which represents the reason why something was bad 
