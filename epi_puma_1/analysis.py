@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+from .utils import *
 
 
 def nbayes_analysis(target, covariables, lim_inf_training, lim_sup_training, 
@@ -86,7 +87,7 @@ def nbayes_analysis(target, covariables, lim_inf_training, lim_sup_training,
     if type_analysis == None:
         type_analysis = 'none'
 
-    if not type_analysis in analysis_types:
+    if type_analysis != None and not type_analysis in analysis_types:
         message = 'There was a problem related analysis type: {} isn\'t an analysis type'.format(type_analysis)
         return (None, None, message)
 
@@ -117,6 +118,11 @@ def nbayes_analysis(target, covariables, lim_inf_training, lim_sup_training,
     for c in covariables:
         body_['covariables'].append(available_covariables[c])   
 
+    if type_analysis != None:
+        body_['traffic_light'] = type_analysis
+    else:
+        body_['traffic_light'] = 'none'
+
     #print(body_['covariables'])
     ## Request to API
     if modifier != None:
@@ -124,6 +130,8 @@ def nbayes_analysis(target, covariables, lim_inf_training, lim_sup_training,
         url = url + 'niche/generateTarget'
     else:
         url = url + 'niche/countsTaxonsGroupTimeValidation'
+
+    body_['period_config'] = ['*', '*', '1']
 
     print(url)
     response = requests.post(url, json=body_)

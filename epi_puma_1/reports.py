@@ -67,11 +67,11 @@ def nbayes_report(path, target, covariables, lim_inf_training, lim_sup_training,
     covariable_filename += ';'
     cells_filename += ';'
 
-    covariable_filename += 'training:' + lim_inf_training + '_to_' + lim_sup_training 
-    cells_filename += 'training:' + lim_inf_training + '_to_' + lim_sup_training
+    covariable_filename += 'training:' + lim_inf_training + '_to_' + lim_sup_training + ';'
+    cells_filename += 'training:' + lim_inf_training + '_to_' + lim_sup_training + ';'
 
-    covariable_filename += 'validation:' + lim_inf_validation + '_to_' + lim_sup_validation 
-    cells_filename += 'validation:' + lim_inf_validation + '_to_' + lim_sup_validation
+    covariable_filename += 'validation:' + lim_inf_validation + '_to_' + lim_sup_validation + ';' 
+    cells_filename += 'validation:' + lim_inf_validation + '_to_' + lim_sup_validation + ';'
 
     if type_analysis == None:
         covariable_filename += 'type:profiling;'
@@ -80,7 +80,7 @@ def nbayes_report(path, target, covariables, lim_inf_training, lim_sup_training,
         covariable_filename += 'type:' + type_analysis + ';'
         cells_filename += 'type:' + type_analysis + ';'
 
-    if modifier == None:
+    if modifier != None:
         covariable_filename += 'modifier:' + modifier + ';'
         cells_filename += 'modifier:' + modifier + ';'
 
