@@ -82,3 +82,14 @@ called `./epi_puma_1`
 		1. Absolute path of covariables report
 		2. Absolute path of cells report
 		3. A string which represents the reason why something was bad 
+
+* `get_cells_name(resolution='mun')`: This function returns names and 
+	codes of cells
+
+	- Args:
+
+		1. `resolution`: "state"or "mun"
+
+	- Returns:
+
+		1. List of objects which represents cells

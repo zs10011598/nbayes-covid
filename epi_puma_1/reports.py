@@ -3,6 +3,7 @@ import json
 import requests
 import pandas as pd
 from .analysis import *
+from .utils import *
 
 
 def nbayes_report(path, target, covariables, lim_inf_training, lim_sup_training, 
@@ -73,21 +74,26 @@ def nbayes_report(path, target, covariables, lim_inf_training, lim_sup_training,
     cells_filename += 'validation:' + lim_inf_validation + '_to_' + lim_sup_validation
 
     if type_analysis == None:
-        covariable_filename += 'type:profiling'
-        cells_filename += 'type:profiling'
+        covariable_filename += 'type:profiling;'
+        cells_filename += 'type:profiling;'
     else:
-        covariable_filename += 'type:' + type_analysis
-        cells_filename += 'type:' + type_analysis
+        covariable_filename += 'type:' + type_analysis + ';'
+        cells_filename += 'type:' + type_analysis + ';'
 
     if modifier == None:
-        covariable_filename += 'modifier:' + modifier
-        cells_filename += 'modifier:' + modifier
+        covariable_filename += 'modifier:' + modifier + ';'
+        cells_filename += 'modifier:' + modifier + ';'
 
     covariable_filename += '.csv'
     cells_filename += '.csv'
 
     df_covariables = pd.DataFrame(covariables_list)
     df_cells = pd.DataFrame(summary_list)
+
+    cell_names = get_cells_name()
+    df_names = pd.DataFrame(cell_names)
+
+    df_cells = df_cells.merge(df_names, how='left', left_on='gridid', right_on='gridid_munkm') 
 
     df_covariables.to_csv(os.path.join(absolute_path, covariable_filename), index=False)
     df_cells.to_csv(os.path.join(absolute_path, cells_filename), index=False)
