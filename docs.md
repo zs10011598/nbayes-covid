@@ -15,7 +15,7 @@ called `./epi_puma_1`
 
 #### File `./epi_puma_1/analysis.py`
 
-* `nbayes_epi_puma_v1(target, covariables, lim_inf_training, 
+* `nbayes_analysis(target, covariables, lim_inf_training, 
 	lim_sup_training, lim_inf_validation, lim_sup_validation, modifier
 	=None type_analysis=None, lim_inf_first=None, lim_sup_first=None)`: This
 	function calculates score, epsilon and presence cells of covariables
